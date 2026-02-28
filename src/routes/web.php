@@ -17,4 +17,6 @@ use App\Http\Controllers\AuthController;
 Route::get('/', function () {
     return view('welcome');
 });
-Route::get('/', [AuthController::class, 'index']);
+Route::middleware('auth')->group(function () {
+  Route::get('/', [AuthController::class, 'index']);
+});
